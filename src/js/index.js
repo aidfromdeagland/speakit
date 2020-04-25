@@ -11,15 +11,20 @@ const translating = {
 const pageAudio = document.querySelector('.audio');
 const intro = document.querySelector('.intro');
 const introButton = intro.querySelector('.intro__button');
+const header = document.querySelector('header');
+const rangeLevel = header.querySelector('.header__range_level');
+const textLevel = header.querySelector('.header__text_level');
+const rangePack = header.querySelector('.header__range_pack');
+const textPack = header.querySelector('.header__text_pack');
 const main = document.querySelector('.main');
 const content = main.querySelector('.content');
 const cardsContainer = content.querySelector('.cards-container');
-const cards = document.querySelectorAll('.card');
+const cards = cardsContainer.querySelectorAll('.card');
 const scene = cardsContainer.querySelector('.scene');
 const sceneImage = scene.querySelector('.scene__image');
 const sceneTranslation = scene.querySelector('.scene__translation');
 
-const getWords = async (page, group) => {
+const drawCards = async (group, page) => {
   const url = `https://afternoon-falls-25894.herokuapp.com/words?page=${page}&group=${group}`;
   const res = await fetch(url);
   const json = await res.json();
@@ -31,16 +36,32 @@ const getWords = async (page, group) => {
     cards[index].dataset.imgsrc = element.image.slice(6);
     cards[index].dataset.audiosrc = element.audio.slice(6);
   });
+
+  sceneImage.src = '';
+  sceneImage.alt = '';
+  sceneTranslation.innerText = '';
 };
 
-getWords(1, 1);
-
+drawCards(0, 0);
 
 introButton.addEventListener('click', () => {
   intro.classList.add('intro_faded');
   setTimeout(() => {
     intro.classList.add('intro_inactive');
   }, 750);
+});
+
+rangeLevel.addEventListener('input', () => {
+  textLevel.innerText = rangeLevel.value;
+});
+rangePack.addEventListener('input', () => {
+  textPack.innerText = rangePack.value;
+});
+
+header.addEventListener('change', () => {
+  const level = +rangeLevel.value - 1;
+  const pack = +rangePack.value - 1;
+  drawCards(level, pack);
 });
 
 cardsContainer.addEventListener('click', (evt) => {

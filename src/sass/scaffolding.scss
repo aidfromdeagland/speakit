@@ -11,6 +11,7 @@ body {
   margin: 0;
   padding: 0;
   min-width: 320px;
+  animation: color-change-3x 6s linear infinite alternate both;
 }
 
 ul, ol {
@@ -21,6 +22,32 @@ ul, ol {
 
 a {
   text-decoration: none;
+}
+
+input[type=range]{
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 5px;
+  background: lightblue;
+  border: 0.1em solid #000000;
+  border-radius: 0.5em;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1em;
+  width: 1em;
+  border: 0.1em solid #000000;
+  border-radius: 50%;
+  background: #1FA2FF;
+  margin-top: -0.4em;
+}
+
+input[type=range]:focus {
+  outline: none;
 }
 
 

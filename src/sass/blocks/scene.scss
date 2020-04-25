@@ -1,5 +1,6 @@
 .scene {
   grid-area: scene;
+  width: 310px;
   height: 260px;
   border: 2px solid #000000;
   border-radius: 0.5em;
@@ -26,9 +27,8 @@
 @media (max-width: 639px) {
   .scene {
     position: fixed;
-    height: 306px;
     z-index: 2;
-    top: 0;
+    top: 40px;
     background: rgb(135, 200, 250);
   }
 }

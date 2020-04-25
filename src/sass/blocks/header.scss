@@ -1,0 +1,52 @@
+.header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__label {
+    text-align: center;
+    margin: 1em;
+
+    &_level {
+      width: 20vw;
+    }
+
+    &_pack {
+      width: 60vw;
+    }
+  }
+
+  &__range {
+    width: 100%;
+
+    &_level {
+
+      &[type=range]::-webkit-slider-thumb {
+        height: 4vw;
+        width: 4vw;
+        margin-top: -1.7vw;
+      }
+    }
+
+    &_pack {
+
+      &[type=range]::-webkit-slider-thumb {
+        height: 3vw;
+        width: 3vw;
+        margin-top: -1.2vw;
+      }
+    }
+
+  }
+}
+
+@media (max-width: 639px) {
+  .header {
+    height: 40px;
+  }
+}

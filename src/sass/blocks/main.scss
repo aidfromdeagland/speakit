@@ -1,5 +1,10 @@
 .main {
   width: 100%;
   min-height: 100vh;
-  animation: color-change-3x 6s linear infinite alternate both;
+}
+
+@media (max-width: 639px) {
+  .main {
+    margin-top: 40px;
+  }
 }
