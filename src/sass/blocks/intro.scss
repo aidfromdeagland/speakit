@@ -1,0 +1,52 @@
+.intro {
+  position: fixed;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF);
+  opacity: 1;
+  transition: all 0.7s;
+
+  &_faded {
+    opacity: 0;
+  }
+
+  &_inactive {
+    display: none;
+  }
+
+  &__heading {
+    text-transform: uppercase;
+    font-size: 3em;
+  }
+
+  &__paragraph {
+    margin: 0 0 1.5em 0;
+    text-align: center;
+    text-transform: lowercase;
+    font-size: 1.5em;
+  }
+
+  &__button {
+    width: 50vw;
+    letter-spacing: 0.3em;
+    height: 2em;
+    border-radius: 0.5em;
+    font-size: 2em;
+    font-weight: bold;
+    background: linear-gradient(to bottom, #A6FFCB, #12D8FA, #1FA2FF);
+    transition: all 0.1s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}

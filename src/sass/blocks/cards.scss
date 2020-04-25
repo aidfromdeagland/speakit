@@ -1,0 +1,18 @@
+.cards-container {
+  position: relative;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 150px [scene-start] 150px 150px [scene-end] 150px;
+  grid-template-rows: 80px [scene-start] 80px 80px 80px [scene-end];
+}
+
+
+@media (max-width: 639px) {
+  .cards-container {
+    grid-template-columns:[scene-start] 150px 150px [scene-end];
+    grid-template-rows: [scene-start] 80px 80px 80px [scene-end];
+    grid-auto-rows: 80px;
+
+    padding-top: 310px;
+  }
+}

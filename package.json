@@ -37,5 +37,8 @@
   "bugs": {
     "url": "https://github.com/aidfromdeagland/speakit/issues"
   },
-  "homepage": "https://github.com/aidfromdeagland/speakit#readme"
+  "homepage": "https://github.com/aidfromdeagland/speakit#readme",
+  "dependencies": {
+    "regenerator-runtime": "^0.13.5"
+  }
 }
