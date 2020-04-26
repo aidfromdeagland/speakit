@@ -71,7 +71,7 @@ const drawCards = async (group, page) => {
   const shuffledJson = shuffle(json);
   shuffledJson.length = 10;
   shuffledJson.forEach((element, index) => {
-    cards[index].firstElementChild.innerText = element.word;
+    cards[index].firstElementChild.innerText = element.word.toLowerCase();
     cards[index].lastElementChild.innerText = element.transcription;
     cards[index].dataset.imgsrc = element.image.slice(6);
     cards[index].dataset.audiosrc = element.audio.slice(6);
