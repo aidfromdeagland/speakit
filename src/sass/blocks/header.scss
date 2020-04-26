@@ -26,6 +26,11 @@
 
   &__range {
     width: 100%;
+    transition: all 0.2s;
+
+    &:disabled {
+      opacity: 0.3;
+    }
 
     &_level {
 

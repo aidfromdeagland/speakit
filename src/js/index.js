@@ -39,7 +39,8 @@ const speechRecognitionList = new SpeechGrammarList();
 recognition.grammars = speechRecognitionList;
 recognition.lang = 'en-US';
 recognition.interimResults = false;
-recognition.maxAlternatives = 2;
+recognition.continuous = false;
+recognition.maxAlternatives = 3;
 
 const resetContent = () => {
   wordsOnPage.length = 0;
@@ -60,7 +61,7 @@ const resetContent = () => {
     element.classList.remove('card_match');
   });
   points.innerText = '';
-}
+};
 
 
 const drawCards = async (group, page) => {
@@ -128,6 +129,8 @@ buttonSpeak.addEventListener('click', () => {
     buttonSpeak.classList.add('content__button_speak_active');
     buttonSpeak.innerText = 'on air!';
     isGameMode = true;
+    rangeLevel.disabled = true;
+    rangePack.disabled = true;
     sceneTranslation.classList.add('scene__translation_game');
 
     recognition.addEventListener('end', recognition.start);
@@ -136,10 +139,12 @@ buttonSpeak.addEventListener('click', () => {
     buttonSpeak.classList.remove('content__button_speak_active');
     buttonSpeak.innerText = 'speak';
     isGameMode = false;
+    rangeLevel.disabled = false;
+    rangePack.disabled = false;
     sceneTranslation.classList.remove('scene__translation_game');
 
     recognition.removeEventListener('end', recognition.start);
-    recognition.stop();
+    recognition.abort();
   }
 });
 
@@ -148,13 +153,13 @@ recognition.addEventListener('result', (evt) => {
   let isFit = false;
   for (let i = 0; i < evt.results[0].length; i += 1) {
     if (wordsOnPage.indexOf(evt.results[0][i].transcript) !== -1
-      && !resolvedWords.some((word) => word === evt.results[0][i].transcript)) {
+      && !resolvedWords.some((word) => word === evt.results[0][i].transcript.toLowerCase())) {
       isFit = true;
       resolvedWords.push(evt.results[0][i].transcript);
       const matchIndex = wordsOnPage.indexOf(evt.results[0][i].transcript);
       const matchedCard = cards[matchIndex];
       matchedCard.classList.add('card_match');
-
+      recognition.stop();
       sceneTranslation.innerText = matchedCard.firstElementChild.textContent;
       sceneImage.src = sourcePrefix + matchedCard.dataset.imgsrc;
       sceneImage.alt = matchedCard.firstElementChild.textContent;
