@@ -153,7 +153,7 @@ recognition.addEventListener('result', (evt) => {
   let isFit = false;
   for (let i = 0; i < evt.results[0].length; i += 1) {
     if (wordsOnPage.indexOf(evt.results[0][i].transcript.toLowerCase()) !== -1
-      && !resolvedWords.some((word) => word === evt.results[0][i].transcript)) {
+      && !resolvedWords.some((word) => word === evt.results[0][i].transcript.toLowerCase())) {
       isFit = true;
       resolvedWords.push(evt.results[0][i].transcript.toLowerCase());
       const matchIndex = wordsOnPage.indexOf(evt.results[0][i].transcript.toLowerCase());
