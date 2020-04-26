@@ -46,7 +46,7 @@ const resetContent = () => {
   wordsOnPage.length = 0;
   resolvedWords.length = 0;
   Array.from(cards).forEach((elem) => {
-    wordsOnPage.push(elem.firstElementChild.innerText);
+    wordsOnPage.push(elem.firstElementChild.innerText.toLowerCase());
   });
   sceneImage.src = questSrc;
   sceneImage.alt = '';
@@ -71,7 +71,7 @@ const drawCards = async (group, page) => {
   const shuffledJson = shuffle(json);
   shuffledJson.length = 10;
   shuffledJson.forEach((element, index) => {
-    cards[index].firstElementChild.innerText = element.word;
+    cards[index].firstElementChild.innerText = element.word.toLowerCase();
     cards[index].lastElementChild.innerText = element.transcription;
     cards[index].dataset.imgsrc = element.image.slice(6);
     cards[index].dataset.audiosrc = element.audio.slice(6);
@@ -152,10 +152,10 @@ buttonSpeak.addEventListener('click', () => {
 recognition.addEventListener('result', (evt) => {
   let isFit = false;
   for (let i = 0; i < evt.results[0].length; i += 1) {
-    if (wordsOnPage.indexOf(evt.results[0][i].transcript) !== -1
-      && !resolvedWords.some((word) => word === evt.results[0][i].transcript.toLowerCase())) {
+    if (wordsOnPage.indexOf(evt.results[0][i].transcript.toLowerCase()) !== -1
+      && !resolvedWords.some((word) => word === evt.results[0][i].transcript)) {
       isFit = true;
-      resolvedWords.push(evt.results[0][i].transcript);
+      resolvedWords.push(evt.results[0][i].transcript.toLowerCase());
       const matchIndex = wordsOnPage.indexOf(evt.results[0][i].transcript.toLowerCase());
       const matchedCard = cards[matchIndex];
       matchedCard.classList.add('card_match');
