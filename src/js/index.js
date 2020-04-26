@@ -156,7 +156,7 @@ recognition.addEventListener('result', (evt) => {
       && !resolvedWords.some((word) => word === evt.results[0][i].transcript.toLowerCase())) {
       isFit = true;
       resolvedWords.push(evt.results[0][i].transcript);
-      const matchIndex = wordsOnPage.indexOf(evt.results[0][i].transcript);
+      const matchIndex = wordsOnPage.indexOf(evt.results[0][i].transcript.toLowerCase());
       const matchedCard = cards[matchIndex];
       matchedCard.classList.add('card_match');
       recognition.stop();
