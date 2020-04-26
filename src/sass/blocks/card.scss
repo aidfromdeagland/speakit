@@ -10,6 +10,19 @@
   border-radius: 0.5em;
   cursor: pointer;
 
+  &_active {
+    background: rgba(180, 80, 150, 0.5);
+    border-color: darkorange;
+
+    & .card__word, & .card__transcription {
+      animation: bounce-right 0.8s both;
+    }
+  }
+
+  &_match {
+    background-color: green;
+  }
+
   &:before {
     position: absolute;
     content: "🔈";

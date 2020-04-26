@@ -41,6 +41,7 @@
     font-weight: bold;
     background: linear-gradient(to bottom, #A6FFCB, #12D8FA, #1FA2FF);
     transition: all 0.1s;
+    cursor: pointer;
 
     &:hover {
       transform: scale(1.05);

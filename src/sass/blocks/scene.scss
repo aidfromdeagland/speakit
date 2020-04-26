@@ -14,13 +14,18 @@
   }
 
   &__translation {
-    margin: 5px;
+    margin: 0;
     padding: 0;
     max-width: 100%;
     overflow: hidden;
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
+
+    &_game {
+      padding-left: 2em;
+      background: url("/src/img/microphone.svg") no-repeat 5px center;
+    }
   }
 }
 
@@ -28,7 +33,7 @@
   .scene {
     position: fixed;
     z-index: 2;
-    top: 45px;
+    top: 50px;
     background: rgb(135, 200, 250);
   }
 }

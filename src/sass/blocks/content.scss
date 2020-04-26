@@ -4,4 +4,33 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+   &__points {
+     height: 30px;
+   }
+
+  &__button {
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: all 0.2s;
+
+    &_speak {
+      margin-top: 10px;
+      width: 50%;
+      max-width: 630px;
+      background: linear-gradient(to bottom, #A6FFCB, #12D8FA, #1FA2FF);
+
+      &_active {
+        background: linear-gradient(to bottom, #46FF8B, #22F882, #1FFF45);
+      }
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
 }
